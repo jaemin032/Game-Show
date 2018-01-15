@@ -26,7 +26,7 @@ function getRandomPhraseAsArray(arr) {
 
 
 function addPhraseToDisplay(arr) {
-  document.getElementById("phrase").innerHTML = "";
+  document.querySelector("#phrase").innerHTML = "";
   for (let i = 0, len = arr.length; i < len; i++) {
     if(arr[i] !== " ") {
       document.getElementById("phrase").innerHTML += "<li class='letter'>" + arr[i] + "</li>";
@@ -68,6 +68,7 @@ function checkWin() {
 }
 
 function decision(result) {
+    const btnStart = document.getElementsByClassName('btn__reset')[0];
 		overlay.className = result;
 		overlay.style.display = 'flex';
 		overlay.children[0].innerHTML = 'You ' +result+'!';
@@ -76,11 +77,12 @@ function decision(result) {
 }
 
 function restart() {
-  const ulPhrase = document.getElementById('phrase').getElementsByTagName('ul')[0];
+  //let ulPhrase = document.getElementById('phrase').getElementsByTagName('ul')[0];
+  let ulPhrase = document.querySelector('#phrase');
   const btnLetter = document.getElementsByTagName('button');
   const img = document.getElementsByTagName('img');
 	missed = 0;
-	ulPhrase.innerHTML = '';
+	ulPhrase.innerHTML = "";
 	for (let i = 0; i <img.length; i++) {
 	 	img[i].src = "images/liveHeart.png";
 	}
